@@ -1,87 +1,128 @@
-# Welcome to React Router!
+# Recipe Router App
 
-A modern, production-ready template for building full-stack React applications using React Router.
+## Overview
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+This project is a multi-page React application built using React Router v7 file-based routing. It converts a simple recipe gallery into a structured application with navigation, dynamic routing, and reusable layout components.
 
-## Features
-
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
-
-## Getting Started
-
-### Installation
-
-Install the dependencies:
-
-```bash
-npm install
-```
-
-### Development
-
-Start the development server with HMR:
-
-```bash
-npm run dev
-```
-
-Your application will be available at `http://localhost:5173`.
-
-## Building for Production
-
-Create a production build:
-
-```bash
-npm run build
-```
-
-## Deployment
-
-### Docker Deployment
-
-To build and run using Docker:
-
-```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
-```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+Users can:
+- View a home page
+- Browse a recipe gallery
+- Click into individual recipe detail pages
 
 ---
 
-Built with ❤️ using React Router.
+## Features
+
+- File-based routing using React Router v7
+- Dynamic route handling for recipe details
+- Shared global layout with navigation
+- TypeScript support
+- Responsive recipe gallery layout
+- Clean separation of pages and components
+
+---
+
+## Tech Stack
+
+- React
+- React Router v7 (file-based routing)
+- TypeScript
+- Vite
+
+---
+
+## Project Structure
+
+
+app/
+data/
+recipes.ts
+
+routes/
+_index.tsx
+gallery.tsx
+recipe.$id.tsx
+
+root.tsx
+routes.ts
+
+main.tsx
+
+
+---
+
+## Routes
+
+| Route | Description |
+|------|------------|
+| `/` | Home page |
+| `/gallery` | Recipe gallery page |
+| `/recipe/:id` | Recipe detail page |
+
+---
+
+## Installation
+
+### 1. Install dependencies
+
+
+npm install
+
+
+### 2. Run development server
+
+
+npm run dev
+
+
+---
+
+## Key Implementation Details
+
+### Home Page
+Displays a welcome message and basic navigation context.
+
+### Gallery Page
+Displays all recipes as clickable cards. Each card links to a dynamic recipe route.
+
+### Recipe Detail Page
+Uses URL parameters to fetch and display a specific recipe including:
+- Title
+- Image
+- Cooking instructions
+
+### Layout
+A global navigation bar is included in the root layout and persists across all pages.
+
+---
+
+## Routing Configuration
+
+Routes are defined using `app/routes.ts`:
+
+- Index route (`/`)
+- Gallery route (`/gallery`)
+- Dynamic recipe route (`/recipe/:id`)
+
+---
+
+## Notes
+
+- Ensure all route files exist in the correct `app/routes` directory
+- The project uses React Router file-based routing, not manual router configuration
+- The `<Outlet />` component is required in `root.tsx` to render child routes
+
+---
+
+## Troubleshooting
+
+If routes do not load:
+
+- Confirm `app/routes.ts` exists and is correctly formatted
+- Ensure `HydratedRouter` is used in `main.tsx`
+- Remove any manual `createBrowserRouter` or `RouterProvider` usage
+- Restart the dev server after changes
+
+---
+
+## Youtube
